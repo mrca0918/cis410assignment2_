@@ -20,6 +20,11 @@ public class Rotator : MonoBehaviour
         // Normalize to a direction.
         d.Normalize();
         float angle = Mathf.Rad2Deg * Mathf.Acos(Vector3.Dot(Vector3.forward, d));
+        Vector3 cross = Vector3.Cross(Vector3.forward, d);
+        if (cross.y < 0.0f)
+        {
+            angle = -angle;
+        }
         _angles.y = angle;
         transform.eulerAngles = _angles;
     }
